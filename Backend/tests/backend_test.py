@@ -16,7 +16,7 @@ class TestSum(unittest.TestCase):
     def test_json(self):
         self.assertEqual(get_arg(self.numbers),
                          self.numbers_in_json,
-                         'Should be {"total": [0,1,2...10000000]}')
+                         'Should be {"n": [0,1,2...10000000]}')
 
     def test_response_200(self):
         self.assertTrue(self.response.status_code == 200)
