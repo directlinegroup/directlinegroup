@@ -23,7 +23,7 @@ class TestSum(unittest.TestCase):
 
     def test_response_total(self):
         self.assertEqual(self.response.text,
-                         json.dumps({"total": 50000005000000}),
+                         json.dumps({"total": 50000005000000.0}),
                          'Should be {"total": 50000005000000}')
 
     def test_response_blank_list(self):
@@ -38,6 +38,9 @@ class TestSum(unittest.TestCase):
         self.assertTrue(get_total_api(numbers_to_add = [1,'2hjdg','dskjf3']).text,
                         json.dumps({"total": 1}))
 
+    def test_response_random_list(self):
+        self.assertTrue(get_total_api(numbers_to_add = [1.1,1.2,1.3]).text,
+                        json.dumps({"total": 3.6}))
 
 if __name__ == '__main__':
     unittest.main()

@@ -15,7 +15,7 @@ def get_total_in_json(total):
 
 @app.route('/total', methods=['GET'])
 def home():
- numbers_to_add = request.values.getlist("n", type=int)
+ numbers_to_add = request.values.getlist("n", type=float)
 
  total = get_total(numbers_to_add)
 
