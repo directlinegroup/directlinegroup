@@ -4,7 +4,7 @@ import json
 import random
 import string
 
-#Main class to test the Sum API and [0,1,2,3,4,5,6,7,8,9] as input parameter in json data
+#Main class to test the Sum API and {n:[0,1,2,3,4,5,6,7,8,9]} submit as input parameter in json format
 class TestSum(unittest.TestCase):
 
     url = 'http://localhost:5000/total'
@@ -29,7 +29,7 @@ class TestSum(unittest.TestCase):
         self.assertTrue(response.headers["Content-Type"] == "application/json")
         self.assertTrue(response.json()["total"] == self.get_sum(numbers_to_add))
 
-#Negative test case when the list submitted with an incorrect argument as json
+#Negative test case when the list submitted with an incorrect argument in json format
 class TestWrongParam(TestSum):
     def get_post_data(self, numbers_to_add):
         letters = string.ascii_letters.join('0123456789')
@@ -49,17 +49,17 @@ class TestWrongParamDumps(TestWrongParam):
     def get_post_data(self, numbers_to_add):
       return json.dumps(super().get_post_data(numbers_to_add))
 
-#[0..9] submitted as JSON
+#[0..9] submitted via JSON input param of the Requests API
 class TestJSON(TestSum):
     def get_method(self, data):
         return requests.get(self.url, json=data)
     
-#[0..9] submitted as PARAM
+#[0..9] submitted via PARAM of the Requests API
 class TestParam(TestSum):
     def get_method(self, data):
         return requests.get(self.url, params=data)
 
-#List submitted as strings
+#List submitted as list of strings 
 class TestString(TestSum):
     def get_list(self):
         return ['0','1','2','3']
@@ -67,22 +67,22 @@ class TestString(TestSum):
     def get_sum(self, numbers_to_add):
         return 1 + 2 + 3
 
-#List submitted as float
+#List submitted as list of float numbers
 class TestFloat(TestSum):
     def get_list(self):
         return [0.5,1.5,2.5,3.5]
 
-#[0..9] submitted as not form-encoded
+#10 Numbers submitted as not form-encoded
 class TestDumps(TestSum):
     def get_post_data(self, numbers_to_add):
       return json.dumps(super().get_post_data(numbers_to_add))
 
-#[0..10000000] submitted as not form-encoded
+#10000000 numbers submitted as not form-encoded
 class TestMillion(TestDumps):
     def get_list(self):
       return list(range(10000001))
 
-#Randon million numbers submitted as not form-encoded
+#10000000 random numbers submitted as not form-encoded
 class TestRandomMillion(TestDumps):
     def get_list(self):
       return [random.randint(9, 99) for iter in range(10000001)]
