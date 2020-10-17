@@ -32,7 +32,8 @@ def home():
         raise Exception('Argument "n" is not found')
     
     #calculate the total
-    total = {'total' : sum(numbers_to_add)}
+    total_numbers = sum(numbers_to_add)
+    total = {'total' : total_numbers}
     
     #return the result
     return make_response(total, 200)
