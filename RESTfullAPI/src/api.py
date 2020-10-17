@@ -10,26 +10,31 @@ headers = {"Content-Type": "application/json"}
 
 @app.route('/total', methods=['GET'])
 def home():
-    print(datetime.now(tz=None), "API started")
+    #first try to get the numbers from the values property
     numbers_to_add = request.values.getlist("n", type=float)
-    print(datetime.now(tz=None), len(numbers_to_add), "numbers_to_add:", numbers_to_add[0:100])
-    if len(numbers_to_add) == 0:
-        if request.content_length < 1024**3:
+    
+    if len(numbers_to_add) == 0: 
+        #when nothing available in values, check data property
+        #but first make sure that the size of data is not too big 
+        #or it might cause memory problems on the server
+        if request.content_length < 100*1024*1024:  
             data = request.data
-            #print(datetime.now(tz=None), "data:", data)
-            #if data is not None:
             try:
                 numbers_to_add = json.loads(data).get("n")
-            except Exception as exc:
+            except Exception as exc: 
+                #when param N not found, raise the exception
                 raise Exception('Argument "n" is not found') from exc
         else:
           raise Exception("Content is too big")
 
+    #if no numbers to add found, raise the exception
     if numbers_to_add is None :
         raise Exception('Argument "n" is not found')
     
+    #calculate the total
     total = {'total' : sum(numbers_to_add)}
-
+    
+    #return the result
     return make_response(total, 200)
 
 if __name__ == '__main__':
