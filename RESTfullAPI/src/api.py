@@ -1,27 +1,36 @@
 import flask
-from flask import request, make_response
 import json
+from flask import request, make_response
+from datetime import datetime
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
 headers = {"Content-Type": "application/json"}
 
-def get_total(list_of_numbers):
- return sum(list_of_numbers)
-
-def get_total_in_json(total):
- return {'total' : total}
-
 @app.route('/total', methods=['GET'])
 def home():
- numbers_to_add = request.values.getlist("n", type=float)
+    print(datetime.now(tz=None), "API started")
+    numbers_to_add = request.values.getlist("n", type=float)
+    print(datetime.now(tz=None), len(numbers_to_add), "numbers_to_add:", numbers_to_add[0:100])
+    if len(numbers_to_add) == 0:
+        if request.content_length < 1024**3:
+            data = request.data
+            #print(datetime.now(tz=None), "data:", data)
+            #if data is not None:
+            try:
+                numbers_to_add = json.loads(data).get("n")
+            except Exception as exc:
+                raise Exception('Argument "n" is not found') from exc
+        else:
+          raise Exception("Content is too big")
 
- total = get_total(numbers_to_add)
+    if numbers_to_add is None :
+        raise Exception('Argument "n" is not found')
+    
+    total = {'total' : sum(numbers_to_add)}
 
- data = get_total_in_json(total)
-
- return make_response(json.dumps(data), 200, headers)
+    return make_response(total, 200)
 
 if __name__ == '__main__':
     app.run()
