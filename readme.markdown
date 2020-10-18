@@ -59,7 +59,7 @@ You should immediately see the confirmation that the server is up and running:
 Tests
 ---------
 
-To run the unit tests open the folder `python_test/tests` in the another terminal window and execute the following:
+To run the unit tests open the folder `python_test/tests` in another terminal window and execute the following:
 
 ```
 python3 -m unittest discover -v
@@ -87,7 +87,7 @@ OK
 
 Total API
 ---------
-The API support the GET and POST methods and returns the total of the given numbers e.g. `[1,2,3] => 1+2+3 = 6`
+The API supports the GET and POST methods and returns the total of the given numbers e.g. `[1,2,3] => 1+2+3 = 6`
 
 To sum up the list of numbers, you should send them as array with `n` as a key e.g. `{n:[1,2,3]}` to the end point `http://localhost:5000/total`
 
@@ -137,7 +137,7 @@ If you try to access the API without sending the list or not using the parameter
 Argument "n" is not found
 ```
 
-If you submit the large amount of data (over 100Mb), the Total API will raise another error:
+If you submit a large amount of data (over 100Mb), the Total API will raise another error:
 
 ```
 Content is too big
