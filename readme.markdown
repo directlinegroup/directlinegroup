@@ -20,7 +20,7 @@ Note: We are looking for the candidate’s “Software Engineering” ability no
 
 Assumptions
 -----------
-1) The input arguments for the API comming from the backend should be in a JSON format {key/value} therefore I suggest using parameter `n` as the key value:
+1) The input argument for the API coming from the backend should be in a JSON format {key/value} therefore I suggest using parameter `n` as the key value:
 ```python
 {n:[1,2,3]}
 ```
