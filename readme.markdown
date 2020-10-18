@@ -20,11 +20,11 @@ Note: We are looking for the candidate’s “Software Engineering” ability no
 
 Assumptions
 -----------
-1) The input arguments for the API should be in a JSON format {key/value} therefore I suggest using parameter `n` as the key value:
+1) The input arguments for the API comming from the backend should be in a JSON format {key/value} therefore I suggest using parameter `n` as the key value:
 ```python
 {n:[1,2,3]}
 ```
-2) The amount of the input data should be limited to 100Mb. Anything more than that would throw an exception  
+2) The amount of the input data should be limited to 100Mb. I suggest throwing an exception in case if the backend submit larger data   
 
 
 Installation
