@@ -17,15 +17,16 @@ def home():
         #when nothing available in values, check data property
         #but first make sure that the size of data is not too big 
         #or it might cause memory problems on the server
-        if request.content_length < 100*1024*1024:  
-            data = request.data
-            try:
-                numbers_to_add = json.loads(data).get("n")
-            except Exception as exc: 
-                #when param N not found, raise the exception
-                raise Exception('Argument "n" is not found') from exc
-        else:
-          raise Exception("Content is too big")
+        if request.content_length > 100*1024*1024:
+            raise Exception("Content is too big")
+
+        data = request.data
+        try:
+            numbers_to_add = json.loads(data).get("n")
+        except Exception as exc: 
+            #when param N not found, raise the exception
+            raise Exception('Argument "n" is not found') from exc
+          
 
     #if no numbers to add found, raise the exception
     if numbers_to_add is None :
