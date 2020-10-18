@@ -131,13 +131,13 @@ response = requests.get(url, data= json.dumps(numbers_to_add))
 
 Exceptions
 ----------
-If you tried to access the API without sending the list or not using the parameter `n` in the requests, you would receive the following error:
+If you try to access the API without sending the list or not using the parameter `n` in the requests, you will receive the following error:
 
 ```
 Argument "n" is not found
 ```
 
-If you try to submit the large amount of data (over 100Mb), the Total API will raise another error:
+If you submit the large amount of data (over 100Mb), the Total API will raise another error:
 
 ```
 Content is too big
