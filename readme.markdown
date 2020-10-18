@@ -24,7 +24,7 @@ Assumptions
 ```python
 {n:[1,2,3]}
 ```
-2) The amount of the input data should be limited to 100Mb. I suggest throwing an exception in case if the backend submit larger data   
+2) The amount of the input data should be limited to 100Mb or it might cause memory problems on the server. I suggest throwing an exception in case if the backend submit larger data   
 
 
 Installation
