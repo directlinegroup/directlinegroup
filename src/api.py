@@ -8,7 +8,7 @@ app.config["DEBUG"] = True
 
 headers = {"Content-Type": "application/json"}
 
-@app.route('/total', methods=['GET'])
+@app.route('/total', methods=['GET', 'POST'])
 def home():
     #first try to get the numbers from the values property
     numbers_to_add = request.values.getlist("n", type=float)
