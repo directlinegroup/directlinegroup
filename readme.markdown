@@ -78,7 +78,7 @@ OK
 
 Total API
 ---------
-The API returns the total of the given numbers e.g. `[1,2,3] => 1+2+3 = 6`
+The API support the GET method and returns the total of the given numbers e.g. `[1,2,3] => 1+2+3 = 6`
 
 To sum up the list of numbers, you should send them as array with `n` as a key e.g. `{n:[1,2,3]}` to the end point `http://localhost:5000/total`
 
