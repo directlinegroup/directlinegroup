@@ -18,6 +18,15 @@ Response:
 Please provide the source code, tests, documentations and any assumptions you have made.
 Note: We are looking for the candidate’s “Software Engineering” ability not just the Python programming skills.
 
+Assumptions
+-----------
+1) The input arguments for the API should be in a JSON format {key/value} therefore I suggest using parameter `n` as the key value:
+```python
+{n:[1,2,3]}
+```
+2) The amount of the input data should be limited to 100Mb. Anything more than that would throw an exception  
+
+
 Installation
 ------------
 
@@ -47,7 +56,7 @@ You should immediately see the confirmation that the server is up and running:
  * Restarting with stat
 ```
 
-API Tests
+Tests
 ---------
 
 To run the unit tests open the folder `python_test/tests` in the another terminal window and execute the following:
