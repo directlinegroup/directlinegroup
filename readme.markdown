@@ -1,4 +1,9 @@
-﻿SOFTWARE ENGINEER PYTHON TEST
+
+This software was developed by Andrey Vasilchenko as a technical task for a job interview for a developer position at Direct Line Group
+
+https://www.linkedin.com/in/andrey-v-3bbb262
+
+SOFTWARE ENGINEER PYTHON TEST
 =============================
 
 Create a REST endpoint that return the sum of a list of numbers e.g. [1,2,3] => 1+2+3 = 6 You are free to use any Python 3 framework,
