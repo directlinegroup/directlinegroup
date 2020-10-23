@@ -1,8 +1,5 @@
 
-This software was developed by Andrey Vasilchenko as a technical task for a job interview for a role of Digital Python Software Engineer at Direct Line Group (Ref:R-8128)
-
-https://www.linkedin.com/in/andrey-v-3bbb262
-
+This software was developed by [Andrey Vasilchenko](https://www.linkedin.com/in/andrey-v-3bbb262) as a technical task for a job interview for a role of Digital Python Software Engineer at Direct Line Group (Ref:R-8128)
 
 SOFTWARE ENGINEER PYTHON TEST
 =============================
